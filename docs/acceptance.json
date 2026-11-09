@@ -1,0 +1,67 @@
+{
+  "format_version": 1,
+  "project": "ptrade-local-backtest",
+  "product": "ptrade 本地回测框架",
+  "release": "0.1.0",
+  "primary_developer": "JonePoon",
+  "date": "2026-11-09",
+  "source": {
+    "reference": "https://github.com/ceke233/ptrade-sim",
+    "reference_commit": "1d0094783ad3daac482e7fafc4d241e4969a2d4e",
+    "seed_commit": "4f8d3cd495bb9f605da9a886616030cc5877df76",
+    "scope": "actual reuse of strategy API, dispatch, matching/account, baseline backtest/data/view code; new independent Git history does not remove original authorship",
+    "original_mit_sha256": "1c6df15d98d43336bd3bd7117d2739a1e303468458d71848bb30c1a4cb1eac70",
+    "tdx_notice_sha256": "b65ba06aec3e18cd1fad4b402a5ae74af64db175a7df7ae3ceb68ff62aae5456"
+  },
+  "python": {
+    "passed": 1046,
+    "skipped": 7,
+    "skip_reason": "Windows host cannot create test symlinks",
+    "warnings": 1,
+    "seconds": 68.12,
+    "coverage_percent": 85.8,
+    "all_registered_floors": "passed",
+    "mypy": "26 source files passed",
+    "lint_format": "passed",
+    "license_distribution_positive_negative_tests": 9,
+    "identity_tests": 4,
+    "controlled_no_network_backtests": {
+      "python": "passed",
+      "rust": "passed",
+      "days": 5,
+      "actual_bars_and_trades": true,
+      "cloud_connection_attempts": 0
+    }
+  },
+  "frontend": {
+    "tests": 22,
+    "lint": "0 errors/warnings",
+    "typecheck": "passed",
+    "build": "passed",
+    "screenshots": 7,
+    "scope": "new-brand desktop/CSS-mobile UI; synthetic results/inventory/saved task samples; real native doctor/read-only plan; mutable task interactions explicitly HTTP mocked"
+  },
+  "native": {
+    "rust_source_files_unchanged_from_validated_seed": 25,
+    "fetch_store_binary_source": "verified immutable v0.3.0 ZIP extracted and source-matched; not newly compiled",
+    "index_wheel": "new product distribution rebuilt/installed with exact original MIT files",
+    "index_module": "_ptrade_sim_native for compatibility",
+    "fetch_sha256": "cc00ba44a3fd5de4efed43d72a7fe3a153b39626b20727fb0efba39352dac1f7",
+    "store_sha256": "a68f855c160855abfecc84e58c5e24d2c9e96b41dadfb1a56b55a47d99230522",
+    "duckdb": "1.5.6"
+  },
+  "benchmark": {
+    "current_cloud_speed_comparison": "not performed",
+    "historic_python_rust_comparison": "see docs/benchmarks; not a cloud comparison"
+  },
+  "distribution": {
+    "core_wheel": "ptrade_local_backtest-0.1.0-py3-none-any.whl",
+    "native_wheel": "ptrade_local_backtest_native-0.1.0-cp310-abi3-win_amd64.whl",
+    "native_zip": "ptrade-local-backtest-data-windows-x64.zip",
+    "license_content_checks": "passed for core/native/tool ZIP and source/native license copies",
+    "isolated_install": "passed: new product/first developer/public namespace, compatible import, manifest, actual Rust query, CLI, HTTP HTML/assets/data status",
+    "sdk_duckdb_version": "1.5.6",
+    "owned_test_server_closed": true,
+    "github": "new independent repository publication next"
+  }
+}

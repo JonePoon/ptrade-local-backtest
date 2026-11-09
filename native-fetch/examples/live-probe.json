@@ -1,0 +1,42 @@
+{
+  "lake": "work/native-probe/lake",
+  "start": "2026-11-06",
+  "end": "2026-11-06",
+  "symbols": [
+    "000001.SZ",
+    "600000.SH"
+  ],
+  "datasets": [
+    "daily_bars",
+    "minute_bars",
+    "minute_bars_5m"
+  ],
+  "provider": "tdx",
+  "tdx_hosts": [
+    [
+      "120.76.1.198",
+      7709
+    ],
+    [
+      "1.202.143.37",
+      7709
+    ],
+    [
+      "111.203.134.118",
+      7709
+    ],
+    [
+      "117.133.128.226",
+      7709
+    ]
+  ],
+  "concurrency": 2,
+  "timeout_secs": 3,
+  "retries": 2,
+  "requests_per_second": 4,
+  "max_pages": 4,
+  "page_size": 800,
+  "resume": true,
+  "refresh": false,
+  "capture_wire": true
+}

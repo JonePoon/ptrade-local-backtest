@@ -1,0 +1,128 @@
+{
+  "environment": {
+    "platform": "Windows-11-10.0.26300-SP0",
+    "python": "3.12.12 (main, Nov 19 2025, 22:43:30) [MSC v.1944 64 bit (AMD64)]",
+    "numpy": "2.5.4",
+    "duckdb": "1.5.6",
+    "native": {
+      "requested": "rust",
+      "effective": "rust",
+      "available": true,
+      "version": "0.1.0",
+      "reason": "Rust 原生分钟索引（API 1）",
+      "state": "available",
+      "module": "_ptrade_sim_native"
+    },
+    "threads": 2
+  },
+  "index": {
+    "codes": 1000,
+    "rows": 228000,
+    "queries": 100000,
+    "batch_queries": 241000,
+    "repeats": 3,
+    "equivalent": true,
+    "workloads": {
+      "python": {
+        "scalar": {
+          "seconds": [
+            0.2553260999848135,
+            0.2475350000022445,
+            0.2429075000109151
+          ],
+          "median_seconds": 0.2475350000022445,
+          "checksum": 10540674338
+        },
+        "ranges": {
+          "seconds": [
+            0.2330954000062775,
+            0.2445284999848809,
+            0.23812929997802712
+          ],
+          "median_seconds": 0.23812929997802712,
+          "checksum": 11282592657
+        },
+        "batch": {
+          "seconds": [
+            0.5574658999976236,
+            0.5539301999961026,
+            0.5625058999867178
+          ],
+          "median_seconds": 0.5574658999976236,
+          "checksum": 25877984000
+        },
+        "build_seconds": 1.2899981811642647e-05,
+        "nbytes": 11988136
+      },
+      "rust": {
+        "scalar": {
+          "seconds": [
+            0.01723680002032779,
+            0.016521599987754598,
+            0.016025899996748194
+          ],
+          "median_seconds": 0.016521599987754598,
+          "checksum": 10540674338
+        },
+        "ranges": {
+          "seconds": [
+            0.031720200000563636,
+            0.03772930000559427,
+            0.0395585999940522
+          ],
+          "median_seconds": 0.03772930000559427,
+          "checksum": 11282592657
+        },
+        "batch": {
+          "seconds": [
+            0.019167799997376278,
+            0.018555099988589063,
+            0.018636799999512732
+          ],
+          "median_seconds": 0.018636799999512732,
+          "checksum": 25877984000
+        },
+        "build_seconds": 0.0007051000138744712,
+        "nbytes": 12974800
+      }
+    },
+    "speedup": {
+      "scalar": 14.98250775867418,
+      "ranges": 6.3115218130927095,
+      "batch": 29.912104009926534
+    }
+  },
+  "engine": {
+    "dataset": "synthetic_contract_database",
+    "codes": 200,
+    "days": 20,
+    "repeats": 3,
+    "seconds": {
+      "python": [
+        4.766339699999662,
+        5.036477499990724,
+        4.7874791999929585
+      ],
+      "rust": [
+        2.5700652999803424,
+        2.6345728999876883,
+        2.5811324999958742
+      ]
+    },
+    "median_seconds": {
+      "python": 4.7874791999929585,
+      "rust": 2.5811324999958742
+    },
+    "speedup": 1.8547979230049643,
+    "equivalent": true,
+    "result": {
+      "daily_sha256": "a580e3ab663bc705477040f14fdfbc60a16aacad9bfcef3da821a61524a9af30",
+      "trades_sha256": "2f84d772791bbd13d50a6b5a841acb5cad5bafa3011eae4cf7cdfe6f42d88232",
+      "trade_count": 100,
+      "final_value": 999494.4739949999,
+      "bar_checksum": 10707880.669999465,
+      "bar_count": 964000
+    },
+    "timing_scope": "engine construction + data reads + strategy run + progress/CSV/export snapshots; excludes DB creation and final pipeline metrics"
+  }
+}

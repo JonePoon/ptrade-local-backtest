@@ -1,0 +1,24 @@
+[package]
+name = "ptrade-sim-native"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.74"
+description = "Owned, immutable minute-row index for ptrade-sim"
+license = "MIT"
+
+[lib]
+name = "_ptrade_sim_native"
+crate-type = ["cdylib", "rlib"]
+
+[features]
+# Keep this opt-in so cargo test can link the interpreter normally.
+extension-module = ["pyo3/extension-module"]
+
+[dependencies]
+pyo3 = { version = "0.23.5", features = ["abi3-py310"] }
+numpy = "0.23.0"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = "debuginfo"

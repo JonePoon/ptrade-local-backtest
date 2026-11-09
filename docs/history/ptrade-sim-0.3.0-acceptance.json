@@ -1,0 +1,184 @@
+{
+  "format_version": 1,
+  "release": "0.3.0",
+  "date": "2026-11-08",
+  "environment": {
+    "os": "Windows 11 x64",
+    "python": "3.12.12",
+    "duckdb": "1.5.6",
+    "native_index": "0.1.0 abi3 Python>=3.10"
+  },
+  "python": {
+    "passed": 1031,
+    "skipped": 7,
+    "skipped_reason": "Windows host lacks symlink creation privilege",
+    "warnings": 1,
+    "seconds": 43.08,
+    "coverage_percent": 85.84032240496678,
+    "coverage_source_sha256": "ec478cf74b74d2cc54046a580d4be145bbf894a1e5297082c01bfe0e48cbe6b3",
+    "registered_module_floors": "all 23 passed",
+    "lint": "passed",
+    "format": "passed",
+    "mypy": "24 modules passed"
+  },
+  "rust": {
+    "tests": {
+      "index": 12,
+      "fetch": 36,
+      "store": 33,
+      "total": 81
+    },
+    "fmt": "all 3 passed",
+    "clippy_release_strict": "all 3 passed",
+    "build_release": "all 3 passed",
+    "real_cli_regressions": 12,
+    "new_wheel_extension_comparison": {
+      "passed": 53,
+      "skipped": 0,
+      "pyd_sha256": "be482ee272126d71d67e0c5ce370ab3c3dfda3c3974ada2aa3c2db0e43db8236"
+    },
+    "binaries": {
+      "fetch_sha256": "cc00ba44a3fd5de4efed43d72a7fe3a153b39626b20727fb0efba39352dac1f7",
+      "store_sha256": "a68f855c160855abfecc84e58c5e24d2c9e96b41dadfb1a56b55a47d99230522"
+    }
+  },
+  "browser": {
+    "node_regressions": 19,
+    "lint": "passed",
+    "typecheck_app": "passed",
+    "typecheck_node": "passed",
+    "production_build": "passed",
+    "screenshots": 7,
+    "scope": "synthetic run UI + native doctor/read-only plan; mutable task interaction separately mocked",
+    "actual_strategy_download": {
+      "bytes": 8321,
+      "sha256": "28bd6b7e5fb9f620d4db943e3fd413cd05d204a70377e764141541e50a084b5f"
+    },
+    "blocked_export_http_status": 422,
+    "mobile_width": 390,
+    "mobile_horizontal_overflow": false
+  },
+  "live_download": {
+    "scope": "two symbols, 2026-11-06 only; new work lake",
+    "symbols": [
+      "000001.SZ",
+      "600000.SH"
+    ],
+    "datasets": [
+      "daily_bars",
+      "minute_bars",
+      "minute_bars_5m"
+    ],
+    "status": "succeeded",
+    "counts": {
+      "bytes_received": 60593,
+      "duplicates_removed": 0,
+      "files": 6,
+      "in_flight": 0,
+      "jobs_completed": 6,
+      "jobs_failed": 0,
+      "jobs_partial": 0,
+      "jobs_skipped": 0,
+      "jobs_succeeded": 6,
+      "jobs_total": 6,
+      "off_session_rows": 0,
+      "pages": 6,
+      "peak_in_flight": 2,
+      "requests": 27,
+      "retries": 3,
+      "rows": 578,
+      "source_rows": 4800
+    },
+    "pyarrow_schema_sha_ohlc_units_session_checks": "passed",
+    "calendar_independently_verified": false,
+    "resume": {
+      "status": "succeeded",
+      "requests": 0,
+      "jobs_skipped": 6
+    }
+  },
+  "synthetic_pipeline": {
+    "scope": "six-dataset incremental sync + existing benchmark full physical verify + Rust minute backtest",
+    "status": "succeeded",
+    "stages": {
+      "reference_before": "succeeded",
+      "fetch": "succeeded",
+      "reference_after": "succeeded",
+      "ingest": "succeeded",
+      "verify": "succeeded"
+    },
+    "fetch_requests": 0,
+    "warm": {
+      "duplicates": 0,
+      "files": 9,
+      "files_changed": 0,
+      "input_bytes": 33792,
+      "rows_inserted": 0,
+      "rows_observed_input": 494,
+      "rows_selected": 485,
+      "rows_stale": 0,
+      "rows_unchanged": 485,
+      "rows_updated": 0
+    },
+    "database_counts": {
+      "ashare_1d_stock": 2,
+      "ashare_1d_index": 2,
+      "ashare_1m_stock": 480,
+      "ashare_stock_basic": 2,
+      "ashare_calendar": 1
+    },
+    "backtest": {
+      "bars": 241,
+      "trades": 2,
+      "history_rows": 10,
+      "daily_rows": 1,
+      "effective_backend": "rust",
+      "minute_day_backend": "rust",
+      "data_errors": []
+    },
+    "source_unchanged": true,
+    "parquet_and_pointer_hashes_unchanged": true,
+    "index_seed": {
+      "status": "partial",
+      "counts": {
+        "duplicates": 0,
+        "files": 1,
+        "files_changed": 1,
+        "input_bytes": 4093,
+        "rows_inserted": 2,
+        "rows_observed_input": 2,
+        "rows_selected": 2,
+        "rows_stale": 0,
+        "rows_unchanged": 0,
+        "rows_updated": 0
+      },
+      "unknowns": [
+        {
+          "kind": "index_volume_unit",
+          "message": "index provider quantity unit not independently established; raw value preserved, never multiplied by 100",
+          "dataset": "index_bars",
+          "table": "ashare_1d_index"
+        }
+      ]
+    }
+  },
+  "benchmark": {
+    "path": "benchmarks/windows-x64-20261108.json",
+    "scope": "synthetic 200 symbols x20 days; 3 repeats; engine excludes DB creation and final pipeline metrics",
+    "index_speedups": {
+      "scalar": 14.98250775867418,
+      "ranges": 6.3115218130927095,
+      "batch": 29.912104009926534
+    },
+    "engine_speedup": 1.8547979230049643,
+    "results_equivalent": true
+  },
+  "distribution": {
+    "native_wheel": "ptrade_sim_native-0.1.0-cp310-abi3-win_amd64.whl",
+    "native_wheel_sha256": "7427ee8682b942e3fdc0078c55bd4a8a611db8d78611bb7479fa0952b3e4e1e5",
+    "core_wheel": "ptrade_sim-0.3.0-py3-none-any.whl",
+    "core_wheel_and_isolated_install": "passed: installed package, manifest, Rust index, CLI, static export, actual HTTP dashboard/assets, owned cleanup",
+    "clean_checkout_python": {"passed": 1030, "skipped": 8, "additional_skip": "separate CNE SDK interpreter not present beside isolated checkout; real SDK path tested in original environment and fresh synthetic pipeline"},
+    "github_actions": "not yet executed for this release"
+  }
+}

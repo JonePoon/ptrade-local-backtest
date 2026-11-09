@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "source": "installed public CNE tdxpy 0.2.7 MIT sources",
+  "files": [
+    {
+      "path": "_wire/helper.py",
+      "sha256": "f1a9c726630c32922808d1dea7875074d7fde65f90882ceaec840ea66510e66e"
+    },
+    {
+      "path": "_wire/parser/base.py",
+      "sha256": "4446f5f0fd7cdfc72ceec77ed49d29d3333d2de1a113873af38e937480823a18"
+    },
+    {
+      "path": "_wire/parser/setup_commands.py",
+      "sha256": "cdf845386f8c6917de6c324a43911ead53fd3d9c827f24ff7430e7f5378e1f38"
+    },
+    {
+      "path": "_wire/parser/std/get_security_bars.py",
+      "sha256": "d3665092d391dd75b750d6954c6027e5f9a777fc60dd64d34a8c8c099281a9da"
+    },
+    {
+      "path": "_wire/parser/std/get_index_bars.py",
+      "sha256": "5ad0449206c17dee667b02ba6dace65e4447b5c4f1cf195bee3ea3d7f1aefc48"
+    },
+    {
+      "path": "bars.py",
+      "sha256": "3cd6bce22d8d46adf56b760527a464df4383e2a64f2ba4725dfa453646cd2332"
+    },
+    {
+      "path": "minute_bars.py",
+      "sha256": "7572f393037fc83b87ccd8d96e8c57e899ab66370422e02c343af4dceed7160d"
+    }
+  ],
+  "framing": {
+    "response_header_bytes": 16,
+    "compressed_length_offset": 12,
+    "plain_length_offset": 14,
+    "length_encoding": "u16 little-endian",
+    "compressed": "zlib only when compressed_length != plain_length",
+    "maximum_bar_count": 800,
+    "unknown_fields": "first 12 response header bytes are retained as opaque"
+  },
+  "request": {
+    "length": 38,
+    "format": "<HIHHHH6sHHHHIIH",
+    "operation": "0x052d",
+    "categories": {
+      "daily": 9,
+      "minute": 8,
+      "minute5": 0
+    }
+  },
+  "units": {
+    "daily_bars": "tdx lots -> shares *100",
+    "index_bars": "tdx original unverified",
+    "minute_bars": "native shares",
+    "minute_bars_5m": "native shares"
+  }
+}

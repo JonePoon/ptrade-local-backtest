@@ -1,0 +1,80 @@
+name: Native data chain
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+concurrency:
+  group: native-data-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  native:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    timeout-minutes: 60
+    env:
+      CARGO_BUILD_JOBS: "2"
+      PYTHONUTF8: "1"
+      PYTHONIOENCODING: utf-8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: |
+            native
+            native-fetch
+            native-store
+      - name: Install Python validation and wheel dependencies
+        run: python -m pip install -e ".[dev,duckdb,dashboard,perf]" "maturin>=1.7,<2"
+      - name: Check all native formatting
+        shell: bash
+        run: |
+          set -euo pipefail
+          for crate in native native-fetch native-store; do
+            cargo fmt --manifest-path "$crate/Cargo.toml" -- --check
+          done
+      - name: Test native index
+        run: cargo test --release --locked --all-targets --manifest-path native/Cargo.toml
+      - name: Test native fetch protocol and Parquet fixtures
+        run: cargo test --release --locked --all-targets --manifest-path native-fetch/Cargo.toml
+      - name: Test native store transactions and schema fixtures
+        run: cargo test --release --locked --all-targets --manifest-path native-store/Cargo.toml
+      - name: Strict native clippy
+        shell: bash
+        run: |
+          set -euo pipefail
+          for crate in native native-fetch native-store; do
+            cargo clippy --release --locked --all-targets --manifest-path "$crate/Cargo.toml" -- -D warnings
+          done
+      - name: Build native fetch
+        run: cargo build --release --locked --manifest-path native-fetch/Cargo.toml
+      - name: Build native store
+        run: cargo build --release --locked --manifest-path native-store/Cargo.toml
+      - name: Build and install actual native index wheel
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m maturin build --release --locked --manifest-path native/Cargo.toml --features extension-module --out native/target/wheels
+          python -m pip install native/target/wheels/*.whl
+          python -c "from ptrade_sim.accelerator import backend_status; s=backend_status('rust'); assert s['state']=='available', s; print(s)"
+      - name: Package startup-verified native tools
+        run: python scripts/package_data_release.py --output native-release
+      - name: Python control, actual Rust index, and compatibility tests
+        run: python -m pytest -q
+      - uses: actions/upload-artifact@v4
+        with:
+          name: native-data-${{ matrix.os }}
+          path: |
+            native-release/*.zip
+            native-release/native-tools-receipt.json
+            native/target/wheels/*.whl
+          if-no-files-found: error

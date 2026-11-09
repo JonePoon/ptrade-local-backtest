@@ -1,0 +1,18 @@
+[build-system]
+requires = ["maturin>=1.7,<2"]
+build-backend = "maturin"
+
+[project]
+name = "ptrade-local-backtest-native"
+version = "0.1.0"
+description = "Optional Rust minute-row index for ptrade 本地回测框架"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE", "LICENSES/*.txt", "THIRD_PARTY_NOTICES.md", "AUTHORS.md"]
+authors = [{ name = "JonePoon" }]
+dependencies = ["numpy>=1.23"]
+
+[tool.maturin]
+module-name = "_ptrade_sim_native"
+features = ["extension-module"]

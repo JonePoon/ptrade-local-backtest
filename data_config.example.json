@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "lake": "../cne_lake/lake",
+  "db": "../cne_lake/out/fixed.duckdb",
+  "start": null,
+  "end": null,
+  "trailing_days": 12,
+  "symbols": [],
+  "datasets": [
+    "daily_bars",
+    "index_bars",
+    "minute_bars",
+    "minute_bars_5m",
+    "corporate_actions",
+    "instruments",
+    "trading_calendar",
+    "adj_factors",
+    "index_constituents",
+    "trading_status"
+  ],
+  "provider": "tdx",
+  "tdx_hosts": [],
+  "concurrency": 4,
+  "timeout_secs": 20,
+  "retries": 3,
+  "requests_per_second": 4,
+  "max_pages": 64,
+  "page_size": 800,
+  "threads": 2,
+  "memory_limit": "2GB",
+  "require_volume_v2": true,
+  "allow_partial": false,
+  "resume": true,
+  "refresh": true,
+  "fetch_exe": null,
+  "store_exe": null,
+  "reference_refresh": {
+    "enabled": false,
+    "python": "../cne_lake/.venv/Scripts/python.exe",
+    "config": "../cne_lake/lake.toml",
+    "timeout_secs": 1800,
+    "before": [
+      "instruments",
+      "trading_calendar",
+      "trading_status",
+      "corporate_actions",
+      "index_constituents"
+    ],
+    "after": [
+      "derive_adj_factors"
+    ]
+  }
+}
